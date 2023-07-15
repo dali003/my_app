@@ -4,7 +4,7 @@
         <input type="color" id="color" name="color"  v-model="searchQuery" @change="test" > <br>
         <label>ID : </label>
         <input type="number" id="id" name="id"  @change="test" > <br>
-        <button  @click="test" >submit</button>
+        <button  @click="post" >submit</button>
        
     </form>
 </template>
@@ -19,14 +19,16 @@ export default {
     const data = ref('');
 
     const search = () => {
+    
       apiClient
         .get('/api/search', {
           params: {
             query: searchQuery.value,
+
           },
         })
         .then(response => {
-          console.log(response.data);
+          console.log(response.query);
           // Handle the response data as needed
         })
         .catch(error => {
@@ -34,6 +36,27 @@ export default {
           // Handle the error
         });
     };
+
+
+
+    const post = (event) => {
+    event.preventDefault()
+    apiClient
+      .post('/api/create', 
+       
+           {description : "test1", age:25},
+
+       
+      )
+      .then(response => {
+        console.log(response.query);
+        // Handle the response data as needed
+      })
+      .catch(error => {
+        console.error(error);
+        // Handle the error
+      });
+  };
 
     const sendData = payload => {
       apiClient
@@ -51,16 +74,19 @@ export default {
     const test = (e)=>{
         e.preventDefault();
       
-        console.log("dali" ,e.target.value);
-        search()
+       
+        search();
+         console.log(e.target.value);
+        
         
     };
    
     return {
-      searchQuery,
-      search,
+      // searchQuery,
       sendData,
-      data,
+      search,
+      post,
+      // data,
       test
 
     };
