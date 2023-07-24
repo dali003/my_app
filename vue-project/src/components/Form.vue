@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
     <form>
         <label>color : </label>
         <input type="color" id="color" name="color"  v-model="searchQuery" @change="test" > <br>
@@ -92,4 +92,4 @@ export default {
     };
   },
 };
-</script>
+</script> -->

@@ -1,13 +1,14 @@
 <script setup>
-import TheWelcome from './components/TheWelcome.vue'
-import Form from './components/Form.vue'
+
+import TodoAppVue from './components/TodoApp.vue'
+import TodoApp from './components/TodoApp.vue'
 </script>
 
 <template>
   
 
   <main>
-    <Form />
+    <TodoApp />
   </main>
 </template>
 
